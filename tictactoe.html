@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 300px);
+      grid-template-rows: repeat(3, 300px);
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="box box-1" id="box1">1</div>
+    <div class="box box-2" id="box2">2</div>
+    <div class="box box-3" id="box3">3</div>
+    <div class="box box-4" id="box4">4</div>
+    <div class="box box-5" id="box5">5</div>
+    <div class="box box-6" id="box6">6</div>
+    <div class="box box-7" id="box7">7</div>
+    <div class="box box-8" id="box8">8</div>
+    <div class="box box-9" id="box9">9</div>
+  </div>
+
+  <script>
+    let boxes = document.querySelectorAll('.box');
+
+    let currentPlayer = 'X';
+    let winningCombinations = [
+      // Horizontals
+      [1,2,3],
+      [4,5,6],
+      [7,8,9],
+      //Verticals
+      [1,4,7],
+      [2,5,8],
+      [3,6,9],
+      // Diagonals
+      [1,5,9],
+      [3,5,7]
+    ];
+
+    let move = 0;
+    for(let i = 0; i < boxes.length; i++) {
+      boxes[i].addEventListener('click', function(e){
+        if(e.target.innerHTML === 'X' || e.target.innerHTML === 'O') {
+          return;
+        }
+
+        e.target.innerHTML = currentPlayer;
+
+        for(let j = 0; j < winningCombinations.length; j++) {
+          let firstBox = document.getElementById('box' + winningCombinations[j][0]).innerHTML;
+          let secondBox = document.getElementById('box' + winningCombinations[j][1]).innerHTML;
+          let thirdBox = document.getElementById('box' + winningCombinations[j][2]).innerHTML;
+
+          let winString = firstBox + secondBox + thirdBox;
+          if(winString === 'XXX') {
+            alert('Winner X');
+            return;
+          }
+          else if(winString === 'OOO') {
+            alert('Winner O');
+            return;
+          }
+        }
+        if(currentPlayer === 'X') {
+          currentPlayer = 'O';
+        }
+        else {
+          currentPlayer = 'X';
+        }
+
+        move++;
+
+        if(move === 9) {
+          alert('Draw');
+        }
+      });
+    }
+
+    // document.getElementById('box1').addEventListener('click', function(e) {
+    //   console.log('hello joseph');
+    // });
+
+    // document.getElementById('box2').addEventListener('click', function(e) {
+    //   console.log('hello joseph');
+    // });
+
+    // document.getElementById('box3').addEventListener('click', function(e) {
+    //   console.log('hello joseph');
+    // });
+  </script>
+</body>
+</html>
