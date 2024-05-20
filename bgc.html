@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="color" id="can">
+    <input type="text" id="cant">
+
+    <script>
+        document.body.style.backgroundColor = localStorage.getItem('color');
+
+
+    document.getElementById('can').addEventListener('change',function(e){
+        document.body.style.backgroundColor = e.target.value;
+        localStorage.setItem('color',e.target.value);
+    });
+    </script>
+</body>
+</html>
