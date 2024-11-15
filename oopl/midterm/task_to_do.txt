@@ -1,0 +1,10 @@
+Online Food Delivery System
+
+
+Classes: Order, Restaurant, Customer, Delivery, Payment, MenuItem, etc.
+
+Abstraction: Abstract class PaymentMethod for processing payments with methods like processTransaction().
+
+Polymorphism: Different PaymentMethod types (e.g., CreditCard, CashOnDelivery) can implement processTransaction() differently.
+
+Inheritance: DeliveryVehicle and BikeDelivery classes could inherit from a common DeliveryMode class.
